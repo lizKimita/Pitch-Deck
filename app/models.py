@@ -4,13 +4,13 @@ class Pitch:
     '''
     all_pitches = []
 
-    def __init__(self, author, category_name, pitch, PostedOn, upVote, downVote):
-        self.author = author
-        self.category_name = category_name
+    def __init__(self, pitch, postedOn):
+        # self.author = author
+        # self.category_name = category_name
         self.pitch = pitch
-        self.PostedOn = PostedOn
-        self.upVote = upVote
-        self.downVote = downVote
+        self.postedOn = postedOn
+        # self.upVote = upVote
+        # self.downVote = downVote
 
     def save_pitch(self):
         Pitch.all_pitches.append(self)
@@ -18,5 +18,16 @@ class Pitch:
     @classmethod
     def clear_pitches(cls):
         Pitch.all_pitches.clear()
+    
+    @classmethod
+    def get_pitches(cls,name):
+        
+        response = []
+
+        for pitch in cls.all_pitches:
+            if pitch.category_name == name:
+                response.append(pitch)
+
+        return response
 
 # class User:
