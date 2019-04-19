@@ -1,0 +1,15 @@
+{% macro displayReviews(review_list) %}
+    {% for review in review_list %}
+    <div class="row">
+        <div class = "col-xs-2 col-sm-2 col-md-4 col-lg-4">
+            <h4><strong> Author</strong></h4>
+            <p> {{review.user.username}} </p>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+            <h2> <a href="{{url_for('main.single_review',id=review.id)}}"></a>{{review.movie_title}}</h2>
+            <p>{{review.movie_review}}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endmacro %}
