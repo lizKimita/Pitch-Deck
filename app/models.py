@@ -1,3 +1,6 @@
+from . import db
+
+
 class Pitch:
     '''
     Pitch class to define the Pitch Objects
@@ -30,4 +33,10 @@ class Pitch:
 
         return response
 
-# class User:
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255))
+
+    def __repr__(self):
+        return f'User {self.username}'
