@@ -26,6 +26,78 @@ def categories():
 
     return render_template('categories.html', pitches = pitches)
 
+@main.route('/pickUpLines/')
+def pickUpLines():
+
+    '''
+    View categories page function that returns the pickUpLines category details page and its data
+    '''
+
+    # category = get_category(name)
+    pitches = Pitch.get_pitches(pickUpLines)
+
+    return render_template('pickUpLines.html', pitches = pitches)
+
+@main.route('/interview/')
+def interview():
+
+    '''
+    View categories page function that returns the interview category details page and its data
+    '''
+
+    # category = get_category(name)
+    pitches = Pitch.get_pitches(interview)
+
+    return render_template('interview.html', pitches = pitches)
+
+@main.route('/product/')
+def product():
+
+    '''
+    View categories page function that returns the product category details page and its data
+    '''
+
+    # category = get_category(name)
+    pitches = Pitch.get_pitches(product)
+
+    return render_template('product.html', pitches = pitches)
+
+@main.route('/promotion/')
+def promotion():
+
+    '''
+    View categories page function that returns the promotion category details page and its data
+    '''
+
+    # category = get_category(name)
+    pitches = Pitch.get_pitches(promotion)
+
+    return render_template('promotion.html', pitches = pitches)
+
+@main.route('/business/')
+def business():
+
+    '''
+    View categories page function that returns the business category details page and its data
+    '''
+
+    # category = get_category(name)
+    pitches = Pitch.get_pitches(business)
+
+    return render_template('business.html', pitches = pitches)
+
+@main.route('/tech/')
+def tech():
+
+    '''
+    View categories page function that returns the tech category details page and its data
+    '''
+
+    # category = get_category(name)
+    pitches = Pitch.get_pitches(tech)
+
+    return render_template('tech.html', pitches = pitches)
+
 # @main.route('/category/pitch/new/<name>', methods = ['GET','POST'])
 # def new_pitch(name):
 #     form = PitchForm()
