@@ -3,19 +3,19 @@
 
 {% block content %}
 
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <a class="ratings" href=""> Write a new Pitch</a>
     
-    </div>
+    </div> -->
     
     <div class="container">
         <div class = "row">
-            <h1>Pitches</h1>
+            <h1>All Pitches</h1>
             <hr>
             {% if pitches %}
                 {{macro.displayPitches(pitches)}}
             {% else %}
-                <h3 class ="text-center" style="font-size:200%"> This category has no pitches </h3>
+                <h3 class ="text-center" style="font-size:200%"> No Pitches Posted yet </h3>
                 <a class="btn btn-success btn-lg text-center"  href="">Write a new Pitch</a>
             {%endif%}
         </div>
