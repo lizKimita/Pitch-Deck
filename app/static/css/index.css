@@ -3,3 +3,9 @@ h4 {
     font-family: 'Pacifico', cursive;
     font-size: 200%;
 }
+.nameuser {
+    font-family: 'Pacifico', cursive;
+    font-size: 400%;
+    text-decoration: underline;
+    text-align: center;
+}
