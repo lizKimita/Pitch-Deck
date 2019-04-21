@@ -44,32 +44,6 @@ class Pitch(db.Model):
     
 
 
-# class Pitch(db.Model):
-#     '''
-#     Pitch class to define the Pitch Objects
-#     '''
-#     __tablename__='pitches'
-
-#     id = db.Column(db.Integer,primary_key = True)
-#     pitch_category = db.Column(db.String)
-#     pitch = db.Column(db.String)
-#     posted = db.Column(db.DateTime,default=datetime.utcnow)
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-
-
-#     def save_pitch(self):
-#         db.session.add(self)
-#         db.session.commit()
-
-#     @classmethod
-#     def clear_pitches(cls):
-#         Pitch.all_pitches.clear()
-    
-#     @classmethod
-#     def get_pitches(cls,id):
-#         pitches = Pitch.query.filter_by(category_id=id).all()
-#         return pitches
-
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
 
@@ -81,6 +55,16 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
     pitches = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    # @classmethod
+    # def get_comments(cls,id):
+    #     comments = Comment.query.filter_by(pitch_id=id).all()
+        
+        # return comments
 
     @property
     def password(self):
@@ -108,3 +92,49 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User {self.name}'
+
+# class Comment(db.Model):
+    
+#     __tablename__ = 'comments'
+
+#     id = db.Column(db.Integer,primary_key = True)
+#     comment= db.Column(db.String)
+#     pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
+#     username =  db.Column(db.String)
+    
+
+#     def save_comment(self):
+#         '''
+#         Function that saves each pitches comments
+#         '''
+#         db.session.add(self)
+#         db.session.commit()
+
+#     @classmethod
+#     def clear_comments(cls):
+#         Comment.all_comments.clear()
+
+#     @classmethod
+#     def get_comments(cls,id):
+#         comments = Comment.query.filter_by(pitch_id=id).all()
+
+#         return comments
+
+# class PitchCategory(db.Model):
+#     '''
+#     Function that saves the various categories for the pitches
+#     '''
+#     __tablename__ ='pitch_categories'
+
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     name_of_category = db.Column(db.String(255))
+#     category_description = db.Column(db.String(255))
+
+#     @classmethod
+#     def get_categories(cls):
+#         '''
+#         Function that fetches all the categories from the database
+#         '''
+#         categories = PitchCategory.query.all()
+#         return categories
