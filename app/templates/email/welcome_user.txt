@@ -1,0 +1,7 @@
+Hello {{user.username}}
+
+Welcome to Pitch Deck,
+
+We have just seen you have signed up for our application and want to welcome you to the family. Take this opportunity to perfect your pitches and in process make lasting first impressions. 
+
+Don't forget to vote and comment on other pitches in the various categories!
