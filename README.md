@@ -1,6 +1,6 @@
 # PITCH DECK
 
-#### This is an application that allows users to add new pitches of any category listed, vote and comment on other users pitches, 22nd, April 2019
+#### This is an application that allows users to add new pitches of any category listed, view other users pitches, vote and comment on them, 22nd, April 2019
 
 #### By **Elizabeth Wanjiku Kimita**
 
@@ -9,8 +9,8 @@
 | User Actions             |       Input                       |            Output                           |
 | :---------------------:  |   :--------------------------:    |  :---------------------------------------:  |
 | Create an Account        |   Click on Sign in                | Fill the sign in form with your details     |
-| Log in                   |   From the login page             | Redirected to the home page                 |
-| To view any Pitches      |   Click on any category and view  | Redirects to a page with a list of pitches  |
+| Log in                   |   Fill the login form             | Redirected to the home page                 |
+| View any Pitches         |   Click on any category and view  | Redirects to a page with a list of pitches  |
 | Add a new Pitch          |   Click Add Pitch Button          | Fill the form to add a new Pitch            |
 | Add a comment            |   Click on the comment button     | Add a comment for the specific pitch        |
 | Upvote/ Downvote         |   Click upvote/Downvote Button    | Votes on a pitch                            |
