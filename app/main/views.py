@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect,url_for,abort
 from . import main
 from ..models import Pitch,User
-from .forms import PitchForm, UpdateProfile, CommentsForm
+from .forms import PitchForm, UpdateProfile
 from flask_login import login_required, current_user
 from .. import db,photos
 import markdown2 
@@ -101,34 +101,18 @@ def new_pitch():
     new_pitch = None
 
     if form.validate_on_submit():
-        # pitch_category = form.category.data
+        pitch_category = form.category.data
         pitch = form.pitch.data
         
-        new_pitch = Pitch(pitch = pitch, user = current_user)
+        new_pitch = Pitch(pitch_category = pitch_category, pitch = pitch, user = current_user)
 
         new_pitch.save_pitch()
 
-        return redirect(url_for('main.index'))
+        return redirect(url_for('.index'))
 
     title = 'New pitch'
     return render_template('new_pitch.html',title = title, pitch_form = form, new_pitch=new_pitch)
 
-# @main.route('/pitch/new/<int:id>', methods = ['GET','POST'])
-# @login_required
-# def new_pitch(id):
-#     form = PitchForm()
-#     # category = get_category(id)
-
-#     if form.validate_on_submit():
-#         category = form.category.data
-#         pitch = form.pitch.data
-        
-#         new_pitch = Pitch(pitch_category = category.id, pitch = pitch, user = current_user)
-#         new_pitch.save_pitch()
-#         return redirect(url_for('.category',id = category.id ))
-
-#     title = f'{category.id} pitch'
-#     return render_template('new_pitch.html',title = title, pitch_form = form, category=category)
 
 
 @main.route('/user/<uname>')
