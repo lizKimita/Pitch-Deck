@@ -165,33 +165,6 @@ def single_pitch(id):
     return render_template('pitch.html',pitch = pitch,format_pitch=format_pitch)
 
 
-# @main.route("/pitch/new/comment/<int:id>",methods=["GET","POST"])
-# @login_required
-# def comment(id):
-    
-#     pitch_id=id
-#     pitch = Pitch.query.()
-
-#     title="Write a comment"
-#     form = CommentsForm()
-
-#     if form.validate_on_submit():
-#         comments = form.comments.data
-
-#         comment = Comment (pitch_id=id,comments=comments)
-
-#         #save
-#         comment.save_comment()
-#         return redirect(url_for('.comment',id=pitch_id, title = title))
-
-#     '''
-#     query Comments database table
-#     '''
-#     all_comments=Comment.query.filter_by(pitch_id=id).all()
-
-#     return render_template("new_comment.html",pitch = pitch,id=pitch_id,comment_form = form, all_comments = all_comments)
-
-
 @main.route("/pitch/new/comment/<int:id>",methods=["GET","POST"])
 @login_required
 def comment(id):

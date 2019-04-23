@@ -12,7 +12,7 @@
                 {% for promotion in pitchPromotion %}
                     <p>{{promotion.pitch}}</p>
                     <p> Posted On:{{promotion.posted}} </p>
-                    <p>Author:{{promotion.user}} </p>
+                    <p>Author:{{promotion.user.username}} </p>
                     <a class="btn btn-warning btn-sm text-center" href="/pitch/new/comment/{{promotion.id}}"> View Comments </a>
                 {% endfor%}
                     <a class="btn btn-success btn-lg text-center"  href="{{url_for('main.new_pitch')}}">Add a Pitch</a>            

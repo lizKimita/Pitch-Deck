@@ -12,7 +12,7 @@
             {% for business in pitchBusiness %}
                 <p>{{business.pitch}}</p>
                 <p> Posted On:{{business.posted}} </p>
-                <p>Author:{{business.user}} </p>
+                <p>Author:{{business.user.username}} </p>
                 <a class="btn btn-warning btn-sm text-center" href="/pitch/new/comment/{{business.id}}"> View Comments </a>
     
             {% endfor%}

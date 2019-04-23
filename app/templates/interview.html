@@ -12,7 +12,7 @@
             {% for interview in pitchInterview %}
                 <p>{{interview.pitch}}</p>
                 <p> Posted On:{{interview.posted}} </p>
-                <p>Author:{{interview.user}} </p>
+                <p>Author:{{interview.user.username}} </p>
                 <a class="btn btn-warning btn-sm text-center" href="/pitch/new/comment/{{interview.id}}"> View Comments </a>
             {% endfor%}
             <a class="btn btn-success btn-lg text-center"  href="{{url_for('main.new_pitch')}}">Add a Pitch</a>

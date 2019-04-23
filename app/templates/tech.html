@@ -12,7 +12,7 @@
                 {% for tech in pitchTech %}
                     <p>{{tech.pitch}}</p>
                     <p> Posted On:{{tech.posted}} </p>
-                    <p>Author:{{tech.user}} </p>
+                    <p>Author:{{tech.user.username}} </p>
                     <a class="btn btn-warning btn-sm text-center" href="/pitch/new/comment/{{tech.id}}"> View Comments </a>
                 {% endfor%}
                     <a class="btn btn-success btn-lg text-center"  href="{{url_for('main.new_pitch')}}">Add a Pitch</a>            

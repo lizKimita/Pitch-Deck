@@ -12,7 +12,7 @@
                 {% for pickup in pitchPickup %}
                     <p>{{pickup.pitch}}</p>
                     <p> Posted On:{{pickup.posted}} </p>
-                    <p>Author:{{pickup.username}} </p>
+                    <p>Author:{{pickup.user.username}} </p>
                     <a class="btn btn-warning btn-sm text-center" href="/pitch/new/comment/{{pickup.id}}"> View Comments </a>
                 {% endfor%}
                     <a class="btn btn-success btn-lg text-center"  href="{{url_for('main.new_pitch')}}"> Add a Pitch </a>

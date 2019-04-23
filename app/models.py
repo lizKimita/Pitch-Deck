@@ -20,6 +20,7 @@ class Pitch(db.Model):
     pitch_category = db.Column(db.String)
     pitch = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
 
 
     def save_pitch(self):
@@ -55,7 +56,7 @@ class User(UserMixin,db.Model):
     pass_secure = db.Column(db.String(255))
 
 
-    # pitches = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
+    pitches = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
     comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
 
     def save_comment(self):
@@ -104,7 +105,7 @@ class Comment(db.Model):
     pitch_id = db.Column(db.Integer)
     posted=db.Column(db.DateTime,default=datetime.utcnow)
     user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
-    # username = db.Column(db.String(255),index = True)
+    
 
 
     def save_comment(self):

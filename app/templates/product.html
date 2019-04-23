@@ -12,7 +12,7 @@
                 {% for product in pitchProduct %}
                     <p>{{product.pitch}}</p>
                     <p> Posted On:{{product.posted}} </p>
-                    <p>Author:{{product.user}} </p>
+                    <p>Author:{{product.user.username}} </p>
                     <a class="btn btn-warning btn-sm text-center" href="/pitch/new/comment/{{product.id}}"> View Comments </a>
                 {% endfor%}
                     <a class="btn btn-success btn-lg text-center"  href="{{url_for('main.new_pitch')}}">Add a Pitch</a>
