@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect,url_for,abort
 from . import main
-from ..models import Pitch,User
-from .forms import PitchForm, UpdateProfile
+from ..models import Pitch,User, Comment
+from .forms import PitchForm, UpdateProfile, CommentsForm
 from flask_login import login_required, current_user
 from .. import db,photos
 import markdown2 
@@ -163,3 +163,54 @@ def single_pitch(id):
         abort(404)
     format_pitch = markdown2.markdown(pitch.pitch,extras=["code-friendly", "fenced-code-blocks"])
     return render_template('pitch.html',pitch = pitch,format_pitch=format_pitch)
+
+
+# @main.route("/pitch/new/comment/<int:id>",methods=["GET","POST"])
+# @login_required
+# def comment(id):
+    
+#     pitch_id=id
+#     pitch = Pitch.query.()
+
+#     title="Write a comment"
+#     form = CommentsForm()
+
+#     if form.validate_on_submit():
+#         comments = form.comments.data
+
+#         comment = Comment (pitch_id=id,comments=comments)
+
+#         #save
+#         comment.save_comment()
+#         return redirect(url_for('.comment',id=pitch_id, title = title))
+
+#     '''
+#     query Comments database table
+#     '''
+#     all_comments=Comment.query.filter_by(pitch_id=id).all()
+
+#     return render_template("new_comment.html",pitch = pitch,id=pitch_id,comment_form = form, all_comments = all_comments)
+
+
+@main.route("/pitch/new/comment/<int:id>",methods=["GET","POST"])
+@login_required
+def comment(id):
+    
+    pitch = Pitch.query.get(id)
+    comment_form = CommentsForm()
+
+    if id is None:
+        abort(404)
+
+    if comment_form.validate_on_submit():
+        comments = comment_form.comments.data
+        new_comment = Comment(comments = comments, pitch_id = id, user = current_user)
+
+        #save
+        new_comment.save_comment()
+        return redirect(url_for('.comment',id=id))
+
+    
+    all_comments = Comment.query.filter_by(pitch_id=id).all()
+
+    return render_template("new_comment.html",pitch = pitch, id=id,comment_form = comment_form, all_comments = all_comments)
