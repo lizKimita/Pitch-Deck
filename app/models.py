@@ -40,7 +40,7 @@ class Pitch(db.Model):
     def get_pitch(cls,id):
         pitch = Pitch.query.filter_by(id=id).first()
 
-        return pitch
+        return pitch    
     
 
 

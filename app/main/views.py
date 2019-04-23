@@ -35,9 +35,10 @@ def pickUpLines():
     View categories page function that returns the pickUpLines category details page and its data
     '''
 
-    pitches = Pitch.get_pitches('pickUpLines')
+    pitchPickup = Pitch.query.filter_by(pitch_category ="Pick Up Lines").all()
 
-    return render_template('pickUpLines.html', pitches = pitches)
+
+    return render_template('pickUpLines.html', pitchPickup = pitchPickup )
 
 @main.route('/interview/')
 def interview():
@@ -46,9 +47,9 @@ def interview():
     View categories page function that returns the interview category details page and its data
     '''
 
-    pitches = Pitch.get_pitches('interview')
+    pitchInterview = Pitch.query.filter_by(pitch_category ="Interview").all()
 
-    return render_template('interview.html', pitches = pitches)
+    return render_template('interview.html', pitchInterview = pitchInterview)
 
 @main.route('/product/')
 def product():
@@ -57,9 +58,9 @@ def product():
     View categories page function that returns the product category details page and its data
     '''
 
-    pitches = Pitch.get_pitches('product')
+    pitchProduct = Pitch.query.filter_by(pitch_category ="Product").all()
 
-    return render_template('product.html', pitches = pitches)
+    return render_template('product.html', pitchProduct = pitchProduct)
 
 @main.route('/promotion/')
 def promotion():
@@ -68,9 +69,9 @@ def promotion():
     View categories page function that returns the promotion category details page and its data
     '''
 
-    pitches = Pitch.get_pitches('promotion')
+    pitchPromotion = Pitch.query.filter_by(pitch_category ="Promotion").all()
 
-    return render_template('promotion.html', pitches = pitches)
+    return render_template('promotion.html', pitchPromotion = pitchPromotion)
 
 @main.route('/business/')
 def business():
@@ -79,9 +80,9 @@ def business():
     View categories page function that returns the business category details page and its data
     '''
 
-    pitches = Pitch.get_pitches('business')
+    pitchBusiness = Pitch.query.filter_by(pitch_category ="Business").all()
 
-    return render_template('business.html', pitches = pitches)
+    return render_template('business.html', pitchBusiness = pitchBusiness)
 
 @main.route('/tech/')
 def tech():
@@ -90,9 +91,9 @@ def tech():
     View categories page function that returns the tech category details page and its data
     '''
 
-    pitches = Pitch.get_pitches('tech')
+    pitchTech = Pitch.query.filter_by(pitch_category ="Tech").all()
 
-    return render_template('tech.html', pitches = pitches)
+    return render_template('tech.html', pitchTech = pitchTech)
 
 @main.route('/pitch/new', methods = ['GET','POST'])
 @login_required
@@ -157,7 +158,7 @@ def update_pic(uname):
 
 @main.route('/pitch/<int:id>')
 def single_pitch(id):
-    pitch=Pitch.query.get(id)
+    pitch = Pitch.query.get(id)
     if pitch is None:
         abort(404)
     format_pitch = markdown2.markdown(pitch.pitch,extras=["code-friendly", "fenced-code-blocks"])
