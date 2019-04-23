@@ -9,3 +9,14 @@ h4 {
     text-decoration: underline;
     text-align: center;
 }
+.jumbo-header{
+    font-family: 'Pacifico', cursive;
+    text-decoration: underline
+}
+.jumbotron{
+    background-color:#DFE166
+}
+.container{
+    background-color:#5d535e52
+    
+}

@@ -9,13 +9,15 @@
 {% macro displayPitches(pitches_list) %}
 
     {% for pitch in pitch_list %}
-    <div class="row">
-        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+    <div class="thumbnail">
+        <div class="caption">
+            <div class="card" style="width: 40rem;">
+                <div class="card-body">
             <h4>Author</h4>
-            <p>{{pitch.user.username}}</p>
-        </div>
-        <div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
+            <p class="card-subtitle mb-2 text-muted">{{pitch.user.username}}</p>
             <h2> <a href="{{url_for('main.single_pitch',id=pitch.id)}}"></a>{{pitch.pitch}}</h2>
+            </div>
+        </div>
         </div>
     </div>
     {% endfor %}
@@ -25,14 +27,15 @@
 {% macro displayComments(all_comments) %}
 {% if all_comments %}
     {% for comment in all_comments %}
-    <div class="row">
-        <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
-            <!-- <h4>Comment</h4> -->
-            <p>Posted by:{{comment.user.username}}</p>
-        </div>
-        <div class="col-xs-10 col-sm-4 col-md-4 col-lg-4">
-            <p>{{comment.comments}}</p>
-            <p> Posted on: {{comment.posted}} </p>
+    <div class="thumbnail" style="background-color: #8faab896">
+        <div class="caption">
+            <div class="card" style="width: 40rem;">
+                <div class="card-body"> 
+                    <p class="card-text">{{comment.comments|capitalize}}</p>
+                    <p class="card-subtitle mb-2 text-muted">Posted by:{{comment.user.username}}</p>
+                    <p class="card-subtitle mb-2 text-muted"> Posted on: {{comment.posted}} </p>
+                </div>
+            </div>
         </div>
     </div>
     {% endfor %}
