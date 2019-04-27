@@ -41,7 +41,6 @@ class Pitch(db.Model):
         pitch = Pitch.query.filter_by(id=id).first()
 
         return pitch    
-    
 
 
 class User(UserMixin,db.Model):

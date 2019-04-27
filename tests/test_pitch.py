@@ -1,34 +1,17 @@
 import unittest
 from app.models import Pitch, User
-from app import db
 
-class PitchTest(unittest.TestCase):
+
+class PostTest(unittest.TestCase):
     '''
-    Test Class to test the behaviour of the Pitch class
+    Test class to test the behaviour of the Pitch class
     '''
 
     def setUp(self):
         '''
         Set up method that will run before every Test
         '''
-        self.user_Shiko = User(username = 'Shiko',password = 'potato', email = 'shiko@gmail.com')
-        self.new_pitch = Pitch(pitch_category = 13452, pitch ='I’m not a photographer, but I can picture me and you together.', user = self.user_Shiko)
+        self.new_pitch = Pitch(pitch = 'The best way to learn Python')
 
-    def tearDown(self):
-        Pitch.query.delete()
-        User.query.delete()
-
-    def test_check_instance_variables(self):
-        self.assertEquals(self.new_pitch.category.id,13452)
-        self.assertEquals(self.new_pitch.pitch,'Review for movies')
-        self.assertEquals(self.new_pitch.user,self.user_Shiko)
-
-    def test_save_pitch(self):
-        self.new_pitch.save_pitch()
-        self.assertTrue(len(Pitch.query.all())>0)
-
-    def test_get_pitch_by_id(self):
-    
-        self.new_pitch.save_pitch()
-        got_pitches = Pitch.get_pitches(13452)
-        self.assertTrue(len(got_pitches) == 1)
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_pitch,Pitch))
